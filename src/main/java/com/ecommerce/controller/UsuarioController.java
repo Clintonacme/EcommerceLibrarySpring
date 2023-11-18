@@ -2,16 +2,16 @@ package com.ecommerce.controller;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.ecommerce.entity.Orden;
 import com.ecommerce.entity.Usuario;
-//import com.ecommerce.entity.Orden;
-//import com.ecommerce.service.IOrdenService;
+import com.ecommerce.service.IOrdenService;
 import com.ecommerce.service.IUsuarioService;
 
 import jakarta.servlet.http.HttpSession;
@@ -21,7 +21,7 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 
-@Controller
+@RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
 	
@@ -29,10 +29,10 @@ public class UsuarioController {
 	@Autowired
 	private IUsuarioService usuarioService;
 	
-	/*
+	
 	@Autowired
 	private IOrdenService ordenService;
-	*/
+	
 	
 	
 	@GetMapping("/registro")
@@ -77,7 +77,7 @@ public class UsuarioController {
 		return "redirect:/";
 	}
 	
-	/*
+	
 	@GetMapping("/compras")
 	public String obtenerCompras(Model model, HttpSession session) {
 		model.addAttribute("sesion", session.getAttribute("idusuario"));
@@ -89,9 +89,9 @@ public class UsuarioController {
 		model.addAttribute("ordenes", ordenes);
 		
 		return "usuario/compras";
-		*/
+		
 	}
-	/*
+	
 	@GetMapping("/detalle/{id}")
 	public String detalleCompra(@PathVariable Integer id, HttpSession session, Model model) {
 		logger.info("Id de la orden: {}", id);
@@ -104,13 +104,13 @@ public class UsuarioController {
 		model.addAttribute("sesion", session.getAttribute("idusuario"));
 		return "usuario/detallecompra";
 	}
-	*/
 	
-	/*
+	
+	
 	@GetMapping("/cerrar")
 	public String cerrarSesion( HttpSession session ) {
 		session.removeAttribute("idusuario");
 		return "redirect:/";
 	}
-	*/
+}
 
